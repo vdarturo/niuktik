@@ -1,13 +1,26 @@
+import { useParams } from "react-router-dom";
+import { getProducts, getProductsByCategory } from "../../../asyncmock";
+import { useState, useEffect } from "react";
+import ItemList from "../ItemList/ItemList";
 
+const ItemDetailContainer = () => {
+  const [products, setProducts] = useState([]);
+  const { idCategory } = useParams();
 
-// eslint-disable-next-line react/prop-types
-const ItemListContainer = ({greeting}) => {
+  useEffect(() => {
+    if(idCategory){
+      getProductsByCategory(idCategory).then(response => setProducts(response))
+    }else{
+      getProducts().then(response => setProducts(response))
+    }
+    console.log(products);
+  }, [idCategory])
 
   return (
-    <>
-      <p className="p-8 title-font font-medium text-lg text-gray-900">{greeting}</p>
-    </>
+    <div>
+        <ItemList products={products} />
+    </div>
   )
 }
 
-export default ItemListContainer
+export default ItemDetailContainer
