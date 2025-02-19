@@ -1,13 +1,8 @@
 import ItemCount from "../ItemCount/ItemCount";
-//import { useState } from "react";
-//import { Link } from "react-router-dom";
+
 
 // eslint-disable-next-line react/prop-types
 const ItemDetail = ({name, price, img, stock, description}) => {
-  /*const [agregarCantidad, setAgregarCantidad] = useState(0); 
-  const manejadorCantidad = (cantidad) => {
-    setAgregarCantidad(cantidad);
-  }*/
   return (
     <section className="text-gray-600 body-font overflow-hidden">
       <div className="container px-5 py-24 mx-auto">
@@ -19,7 +14,7 @@ const ItemDetail = ({name, price, img, stock, description}) => {
             <div className="flex items-center pb-5 border-b-2 border-gray-100 mb-5"></div>
             <div className="flex justify-between">
               <span className="title-font font-medium text-2xl text-gray-900">${price}</span>
-              <ItemCount/>             
+              <ItemCount stock={stock}/>             
             </div>
           </div>
         </div>
