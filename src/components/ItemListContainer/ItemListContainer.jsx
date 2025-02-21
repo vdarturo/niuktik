@@ -13,7 +13,6 @@ const ItemDetailContainer = () => {
     }else{
       getProducts().then(response => setProducts(response))
     }
-    console.log(products);
   }, [idCategory])
 
   return (

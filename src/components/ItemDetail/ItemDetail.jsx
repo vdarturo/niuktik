@@ -1,8 +1,19 @@
 import ItemCount from "../ItemCount/ItemCount";
+import { useState } from "react";
+import { useContext } from "react";
+import { CartContext } from "../../context/CartContext";
 
+const ItemDetail = ({id, name, price, img, stock, description}) => {
+  // eslint-disable-next-line no-unused-vars
+  const [quantityItem, setQuantityItem] = useState(0); 
+  const { addProduct } = useContext(CartContext); 
 
-// eslint-disable-next-line react/prop-types
-const ItemDetail = ({name, price, img, stock, description}) => {
+  const quantityHandler = (quantity) => {
+    setQuantityItem(quantity);
+    const item = {id, name, price}; 
+    addProduct(item, quantity); 
+  }
+
   return (
     <section className="text-gray-600 body-font overflow-hidden">
       <div className="container px-5 py-24 mx-auto">
@@ -14,7 +25,7 @@ const ItemDetail = ({name, price, img, stock, description}) => {
             <div className="flex items-center pb-5 border-b-2 border-gray-100 mb-5"></div>
             <div className="flex justify-between">
               <span className="title-font font-medium text-2xl text-gray-900">${price}</span>
-              <ItemCount stock={stock}/>             
+              <ItemCount stock={stock} addItemCart={quantityHandler}/>
             </div>
           </div>
         </div>

@@ -1,6 +1,5 @@
 import { NavLink } from "react-router-dom";
 
-// eslint-disable-next-line react/prop-types
 const Item = ({id, name, price, img}) => {
   return (
     <div className="xl:w-1/6 md:w-1/2 p-4">
